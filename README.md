@@ -104,7 +104,7 @@ Wraps over the connection's `disconnect` call.
 
 ### stop(callback); stopAsync()
 
-Stops the postgres instance.
+Stops the postgres instance. This is a force-kill.
 
 ### clean(callback); cleanAsync()
 

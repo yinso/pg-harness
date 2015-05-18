@@ -56,7 +56,7 @@ class Postgres
       data = chunk.toString()
       if data.match /is shut down/
         return cb(null, self)
-    self.inst.kill 'SIGTERM'
+    self.inst.kill 'SIGINT'
   clean: (cb) ->
     path = this.dataPath
     fs.rmrf path, (err) ->
@@ -75,6 +75,8 @@ class Postgres
         self.conn = conn
         cb null, self
     )
+  load: (spec, module) ->
+    DBI.load spec, module
   disconnect: (cb) ->
     @conn.disconnect cb
   query: (query, args, cb) ->
